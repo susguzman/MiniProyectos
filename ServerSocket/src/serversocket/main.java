@@ -27,6 +27,7 @@ public class main {
                     try {
                         s.iniciar();
                     } catch (IOException ex) {
+                        System.out.println("Se perdio la conexion con el cliente");
                         Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
@@ -37,7 +38,7 @@ public class main {
             do{
                 m = br.readLine();
                 s.enviarMensaje(m);
-            }while(m != null && !m.equals("adios"));
+            }while(!s.socket.isClosed());
             
         } catch (IOException ex) {
             Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
