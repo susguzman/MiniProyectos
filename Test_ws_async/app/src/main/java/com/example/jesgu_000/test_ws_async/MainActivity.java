@@ -61,9 +61,15 @@ public class MainActivity extends ActionBarActivity implements IWsdl2CodeEvents{
     }
 
     private void onClick_saludar(){
-        ws_sharingJob ws = new ws_sharingJob();
-        String r = ws.saludo("Mi app");
-        Toast.makeText(this, "Saludo normal:" + r, Toast.LENGTH_LONG);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ws_sharingJob ws = new ws_sharingJob();
+                String r = ws.saludo("Mi app");
+                Toast.makeText(getApplicationContext(), "Saludo normal:" + r, Toast.LENGTH_LONG);
+            }
+        }).start();
+
     }
 
     private void okClic_saludar_async(){
