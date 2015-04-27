@@ -61,15 +61,9 @@ public class MainActivity extends ActionBarActivity implements IWsdl2CodeEvents{
     }
 
     private void onClick_saludar(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                ws_sharingJob ws = new ws_sharingJob();
-                String r = ws.saludo("Mi app");
-                Toast.makeText(getApplicationContext(), "Saludo normal:" + r, Toast.LENGTH_LONG);
-            }
-        }).start();
-
+        ws_sharingJob ws = new ws_sharingJob();
+        String r = ws.saludo("Mi app");
+        Toast.makeText(getApplicationContext(), "Saludo normal:" + r, Toast.LENGTH_LONG).show();
     }
 
     private void okClic_saludar_async(){
@@ -91,7 +85,7 @@ public class MainActivity extends ActionBarActivity implements IWsdl2CodeEvents{
         //se activa cuando se obtuvo los datos del ws_async
 
         if(methodName.equals("saludos")){//Si es el ws saludo
-            Toast.makeText(this, "Saludo asycn:" + Data.toString(), Toast.LENGTH_LONG);
+            Toast.makeText(this, "Saludo asycn:" + Data.toString(), Toast.LENGTH_LONG).show();
         }
     }
 
